@@ -26,3 +26,190 @@ This API allows users to add schools and retrieve a list of schools sorted by pr
 ---
 
 ## 📁 Project Structure
+
+```
+src/
+ ├── controllers/
+ ├── services/
+ ├── routes/
+ ├── validators/
+ ├── utils/
+ ├── db.js
+ └── app.js
+```
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1. Clone the repository
+
+```bash
+git clone <your-repo-url>
+cd school-api
+```
+
+---
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+---
+
+### 3. Configure Environment Variables
+
+Create a `.env` file in root:
+
+```
+PORT=3000
+
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=your_password
+DB_NAME=school_db
+```
+
+---
+
+### 4. Setup Database
+
+#### Create Database
+```sql
+CREATE DATABASE school_db;
+```
+
+#### Create Table
+```sql
+CREATE TABLE schools (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  address VARCHAR(255) NOT NULL,
+  latitude FLOAT NOT NULL,
+  longitude FLOAT NOT NULL
+);
+```
+
+---
+
+### 5. Run the project
+
+```bash
+npm run dev
+```
+
+---
+
+## 🔌 API Endpoints
+
+### ➤ Add School
+
+**Endpoint:**
+POST /api/addSchool
+
+**Request Body:**
+```json
+{
+  "name": "ABC School",
+  "address": "Jaipur",
+  "latitude": 26.9124,
+  "longitude": 75.7873
+}
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "message": "School added successfully"
+}
+```
+
+---
+
+### ➤ List Schools (Sorted by Distance)
+
+**Endpoint:**
+GET /api/listSchools?latitude=26.9&longitude=75.8
+
+**Response:**
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": 1,
+      "name": "ABC School",
+      "address": "Jaipur",
+      "latitude": 26.9124,
+      "longitude": 75.7873,
+      "distance": 1.2
+    }
+  ]
+}
+```
+
+---
+
+## 📍 Distance Calculation
+
+Distance between user and school is calculated using the Haversine Formula.
+
+---
+
+## 🧪 Testing
+
+Use Postman to test APIs.
+
+---
+
+## 🌐 Live API
+
+https://your-app.onrender.com
+
+---
+
+## 📬 Postman Collection
+
+<your-postman-link>
+
+---
+
+## 📦 Scripts
+
+```
+"scripts": {
+  "dev": "nodemon src/app.js",
+  "start": "node src/app.js"
+}
+```
+
+---
+
+## ⚠️ Validation Rules
+
+- All fields are required
+- Latitude must be between -90 to 90
+- Longitude must be between -180 to 180
+
+---
+
+## 💡 Improvements (Optional)
+
+- Add authentication
+- Add pagination
+- Optimize queries
+
+---
+
+## 👨‍💻 Author
+
+Your Name
+
+---
+
+## 📄 License
+
+This project is for assignment/demo purposes.
