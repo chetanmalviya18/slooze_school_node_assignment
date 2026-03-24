@@ -45,7 +45,7 @@ src/
 ### 1. Clone the repository
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/chetanmalviya18/slooze_school_node_assignment.git
 cd school-api
 ```
 
@@ -107,7 +107,7 @@ npm run dev
 ### ➤ Add School
 
 **Endpoint:**
-POST /api/addSchool
+POST /api/addSchools
 
 **Request Body:**
 ```json
@@ -122,8 +122,11 @@ POST /api/addSchool
 **Response:**
 ```json
 {
-  "success": true,
-  "message": "School added successfully"
+    "success": true,
+    "message": "School added successfully",
+    "data": {
+        "id": 1
+    }
 }
 ```
 
@@ -137,17 +140,18 @@ GET /api/listSchools?latitude=26.9&longitude=75.8
 **Response:**
 ```json
 {
-  "success": true,
-  "data": [
-    {
-      "id": 1,
-      "name": "ABC School",
-      "address": "Jaipur",
-      "latitude": 26.9124,
-      "longitude": 75.7873,
-      "distance": 1.2
-    }
-  ]
+    "message": "Schools retrieved and sorted successfully",
+    "count": 1,
+    "data": [
+        {
+            "id": 11,
+            "name": "Expert International School",
+            "address": "Virar",
+            "latitude": 4.1234002113342285,
+            "longitude": 9.652199745178223,
+            "distance": 7970.99
+        }
+    ]
 }
 ```
 
@@ -155,13 +159,16 @@ GET /api/listSchools?latitude=26.9&longitude=75.8
 
 ## 📍 Distance Calculation
 
-Distance between user and school is calculated using the Haversine Formula.
+Distance between user and school is calculated using the Haversine Formula, which determines the shortest distance between two points on Earth.
 
 ---
 
 ## 🧪 Testing
 
-Use Postman to test APIs.
+Use Postman to test APIs:
+
+Add School → POST request with JSON body
+List Schools → GET request with query params
 
 ---
 
@@ -193,23 +200,3 @@ https://your-app.onrender.com
 - All fields are required
 - Latitude must be between -90 to 90
 - Longitude must be between -180 to 180
-
----
-
-## 💡 Improvements (Optional)
-
-- Add authentication
-- Add pagination
-- Optimize queries
-
----
-
-## 👨‍💻 Author
-
-Your Name
-
----
-
-## 📄 License
-
-This project is for assignment/demo purposes.
